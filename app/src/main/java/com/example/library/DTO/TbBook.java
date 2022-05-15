@@ -3,15 +3,43 @@ package com.example.library.DTO;
 public class TbBook {
 
     String _id;
+
+    public TbBook(int image, String book_title, String book_author) {
+        this.image = image;
+        this.book_title = book_title;
+        this.book_author = book_author;
+    }
+
+    int image;
     String book_title;
     String book_author;
     String book_pages;
+
+    public TbBook(int image, String _id, String book_title, String book_author, String book_pages) {
+        this.image = image;
+        this._id = _id;
+        this.book_title = book_title;
+        this.book_author = book_author;
+        this.book_pages = book_pages;
+    }
+
+    public TbBook() {
+
+    }
 
     public static final String TABLE_NAME = "my_library";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_TITLE = "book_title";
     public static final String COLUMN_AUTHOR = "book_author";
     public static final String COLUMN_PAGES = "book_pages";
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
 
     public String get_id() {
         return _id;

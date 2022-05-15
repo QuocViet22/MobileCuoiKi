@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.library.Adapter.CustomAdapter;
+import com.example.library.Login.ListUserActivity;
+import com.example.library.Login.LoginDB;
 import com.example.library.R;
 import com.example.library.SQLiteHelper.MyDatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,9 +29,10 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    FloatingActionButton add_button;
+    FloatingActionButton add_button, search_button;
     ImageView empty_imageview;
     TextView no_data;
+    LoginDB DB;
 
     MyDatabaseHelper myDB;
     ArrayList<String> book_id, book_title, book_author, book_pages;
@@ -48,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        search_button = findViewById(R.id.search_button);
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -99,10 +111,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    //    delete all
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.delete_all) {
             confirmDialog();
+        } else if (item.getItemId() == R.id.manage_user) {
+            Intent intent = new Intent(MainActivity.this, ListUserActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -130,4 +147,5 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+
 }

@@ -8,4 +8,11 @@
         android:icon="@drawable/ic_delete"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/manage_user"
+        android:title="Manage user"
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="never"
+        />
+
 </menu>
