@@ -12,7 +12,7 @@
         android:id="@+id/btnsignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/repassword"
+        android:layout_below="@+id/radioGroup"
         android:layout_marginTop="30dp"
         android:text="Register" />
 
@@ -51,6 +51,39 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:contentDescription="HinhMH" />
+        android:contentDescription="HinhMH"
+        android:src="@drawable/imageicon"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_below="@+id/repassword"
+        android:layout_marginTop="30dp">
 
+        <RadioButton
+            android:id="@+id/radio_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shelf 1"
+            android:onClick="checkButton"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shelf 2"
+            android:onClick="checkButton"/>
+
+        <RadioButton
+            android:id="@+id/radio_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shelf 3"
+            android:onClick="checkButton"/>
+
+    </RadioGroup>
 </RelativeLayout>
+

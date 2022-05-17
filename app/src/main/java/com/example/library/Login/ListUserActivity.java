@@ -35,8 +35,9 @@ public class ListUserActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             String userName = cursor.getString(0);
             String password = cursor.getString(1);
-            byte[] image = cursor.getBlob(2);
-            arrayUser.add(new User(userName, password, image));
+            String bookShelf = cursor.getString(2);
+            byte[] image = cursor.getBlob(3);
+            arrayUser.add(new User(userName, password, bookShelf, image));
         }
         UserAdapter adapter = new UserAdapter(ListUserActivity.this, ListUserActivity.this, R.layout.row_listview, arrayUser);
         lvDanhsach.setAdapter(adapter);

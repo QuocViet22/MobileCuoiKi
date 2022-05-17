@@ -35,10 +35,21 @@ public class User {
     public String password;
     public byte[] image;
 
-    public User(String user, String password, byte[] image) {
+    public String getBookShelf() {
+        return bookShelf;
+    }
+
+    public void setBookShelf(String bookShelf) {
+        this.bookShelf = bookShelf;
+    }
+
+    public String bookShelf;
+
+    public User(String user, String password, String bookShelf, byte[] image) {
         this.userName = user;
         this.password = password;
         this.image = image;
+        this.bookShelf = bookShelf;
     }
 
     public User(){

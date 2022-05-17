@@ -8,6 +8,21 @@
     android:padding="10dp"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginTop="30dp"
+        android:text="Update user" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnUpdate"
+        android:layout_marginTop="30dp"
+        android:text="Delete user" />
 
     <EditText
         android:id="@+id/repassword"
@@ -17,14 +32,11 @@
         android:layout_marginTop="30dp"
         android:hint="Retype Password" />
 
-    <TextView
+    <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="230dp"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:layout_marginLeft="20dp"
         android:hint="User Name" />
 
     <EditText
@@ -39,21 +51,39 @@
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:contentDescription="image" />
-
-    <Button
-        android:id="@+id/btnUpdate"
-        android:layout_width="match_parent"
+        android:contentDescription="HinhMH"
+        android:src="@drawable/imageicon"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
         android:layout_below="@+id/repassword"
-        android:layout_marginTop="30dp"
-        android:text="Update user" />
+        android:layout_marginTop="30dp">
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnUpdate"
-        android:layout_marginTop="30dp"
-        android:text="Delete user" />
+        <RadioButton
+            android:id="@+id/radio_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shelf 1"
+            android:onClick="checkButton"
+            />
+
+        <RadioButton
+            android:id="@+id/radio_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shelf 2"
+            android:onClick="checkButton"/>
+
+        <RadioButton
+            android:id="@+id/radio_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shelf 3"
+            android:onClick="checkButton"/>
+
+    </RadioGroup>
 </RelativeLayout>
+

@@ -21,7 +21,7 @@ public class LoginDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("create Table if not exists users(username TEXT primary key, password TEXT, image Blob)");
+        MyDB.execSQL("create Table if not exists users(username TEXT primary key, password TEXT, bookShelf TEXT, image Blob)");
     }
 
     @Override
@@ -29,12 +29,13 @@ public class LoginDB extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
-    public Boolean insertData(String username, String password, byte[] image) {
+    public Boolean insertData(String username, String password, String bookShelf, byte[] image) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         contentValues.put("password", password);
         contentValues.put("image", image);
+        contentValues.put("bookShelf", bookShelf);
 
 //        String sql = "Insert into users values (?,?,?)";
 //        SQLiteStatement statement = MyDB.compileStatement(sql);
@@ -50,11 +51,12 @@ public class LoginDB extends SQLiteOpenHelper {
             return true;
     }
 
-    public Boolean updateData(String username, String password, byte[] image) {
+    public Boolean updateData(String username, String password, String bookShelf, byte[] image) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
         contentValues.put("password", password);
+        contentValues.put("bookShelf", bookShelf);
         contentValues.put("image", image);
 
 //        String sql = "Insert into users values (?,?,?)";

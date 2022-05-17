@@ -17,14 +17,48 @@
             android:layout_height="100dp" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="User name:"
+            android:textSize="20sp" />
+        <TextView
             android:id="@+id/txtTen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="10dp"
             android:ellipsize="end"
             android:lines="1"
             android:text="Manage User"
             android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTen"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Book shelf:"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/txtShelf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTen"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="50dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="Book shelf"
+            android:textSize="20sp" />
+
     </androidx.cardview.widget.CardView>
+
+
 </LinearLayout>

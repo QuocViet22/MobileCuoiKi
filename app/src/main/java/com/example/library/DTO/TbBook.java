@@ -3,17 +3,16 @@ package com.example.library.DTO;
 public class TbBook {
 
     String _id;
+    int image;
+    String book_title;
+    String book_author;
+    String book_pages;
 
     public TbBook(int image, String book_title, String book_author) {
         this.image = image;
         this.book_title = book_title;
         this.book_author = book_author;
     }
-
-    int image;
-    String book_title;
-    String book_author;
-    String book_pages;
 
     public TbBook(int image, String _id, String book_title, String book_author, String book_pages) {
         this.image = image;

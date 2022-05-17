@@ -7,10 +7,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.content.Intent;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.library.Activity.MainActivity;
@@ -21,6 +24,8 @@ import java.io.ByteArrayOutputStream;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText username, password, repassword;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
     ImageView image;
     Button signup, signin;
     LoginDB DB;
@@ -37,7 +42,10 @@ public class RegisterActivity extends AppCompatActivity {
         repassword = (EditText) findViewById(R.id.repassword);
         signup = (Button) findViewById(R.id.btnsignup);
         signin = (Button) findViewById(R.id.btnsignin);
+        radioGroup = findViewById(R.id.radioGroup);
         DB = new LoginDB(this);
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
                 String repass = repassword.getText().toString();
+                String bookShelf = (String) radioButton.getText();
+
 
                 if (user.equals("") || pass.equals("") || repass.equals(""))
                     Toast.makeText(RegisterActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
@@ -60,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (pass.equals(repass)) {
                         Boolean checkuser = DB.checkusername(user);
                         if (checkuser == false) {
-                            Boolean insert = DB.insertData(user, pass, ConverttoArrayByte(image));
+                            Boolean insert = DB.insertData(user, pass, bookShelf, ConverttoArrayByte(image));
                             if (insert == true) {
                                 Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -102,5 +112,14 @@ public class RegisterActivity extends AppCompatActivity {
             image.setImageBitmap(bitmap);
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void checkButton(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+
+        radioButton = findViewById(radioId);
+
+//        Toast.makeText(this, "Selected Radio Button: " + radioButton.getText(),
+//                Toast.LENGTH_SHORT).show();
     }
 }

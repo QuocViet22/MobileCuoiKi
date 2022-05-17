@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,10 +50,12 @@ public class UserAdapter extends ArrayAdapter<User> {
             CardView cardView = (CardView) view.findViewById(R.id.cardView);
             ImageView imgHinhDaidien = (ImageView) view.findViewById(R.id.imgAnhDaiDien);
             TextView txtTenSP = (TextView) view.findViewById(R.id.txtTen);
+            TextView txtShelf = view.findViewById(R.id.txtShelf);
 
             Bitmap bitmap = BitmapFactory.decodeByteArray(user.image, 0, user.image.length);
             imgHinhDaidien.setImageBitmap(bitmap);
             txtTenSP.setText(user.userName);
+            txtShelf.setText(user.bookShelf);
 
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -60,6 +64,7 @@ public class UserAdapter extends ArrayAdapter<User> {
                     intent.putExtra("userName", user.userName);
                     intent.putExtra("password", user.password);
                     intent.putExtra("image", user.image);
+//                    intent.putExtra("bookShelf", user.bookShelf);
                     Log.i("in ra: ", user.userName);
                     activity.startActivity(intent);
                 }

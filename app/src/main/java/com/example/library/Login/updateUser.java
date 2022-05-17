@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +36,9 @@ public class updateUser extends AppCompatActivity {
     EditText password_input, repassword_input;
     TextView username_input;
     ImageView image_input;
-    String userName, password, repassword, title;
+    String userName, password, repassword, title, bookShelf;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
     byte[] avatar;
     private int REQUEST_CODE = 1;
 
@@ -50,6 +54,10 @@ public class updateUser extends AppCompatActivity {
         image_input = findViewById(R.id.imageView);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDelete);
+
+        radioGroup = findViewById(R.id.radioGroup);
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
         getAndSetIntentData();
 
         image_input.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +77,8 @@ public class updateUser extends AppCompatActivity {
                 userName = username_input.getText().toString().trim();
                 password = password_input.getText().toString().trim();
                 repassword = repassword_input.getText().toString().trim();
+                bookShelf = (String) radioButton.getText();
+
                 if (userName.equals("") || password.equals("") || repassword.equals(""))
                     Toast.makeText(updateUser.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else {
@@ -79,7 +89,7 @@ public class updateUser extends AppCompatActivity {
 //                        } else {
 //                            Toast.makeText(updateUser.this, "User already exists!", Toast.LENGTH_SHORT).show();
 //                        }
-                        Boolean updateData = DB.updateData(userName, password, ConverttoArrayByte(image_input));
+                        Boolean updateData = DB.updateData(userName, password, bookShelf, ConverttoArrayByte(image_input));
 //                              Boolean updateData = DB.insertData(userName, password, ConverttoArrayByte(image_input));
                         if (updateData == true) {
                             Toast.makeText(updateUser.this, "Updated successfully", Toast.LENGTH_SHORT).show();
@@ -109,9 +119,12 @@ public class updateUser extends AppCompatActivity {
             //Getting Data from Intent
             userName = getIntent().getStringExtra("userName");
             avatar = getIntent().getByteArrayExtra("image");
+            bookShelf = getIntent().getStringExtra("bookShelf");
 
             //Setting Intent Data
             username_input.setText(userName);
+//            bookShelf_input.setText(bookShelf);
+//            radioButton.set
             Bitmap bitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
             image_input.setImageBitmap(bitmap);
 //            Log.d("stev", title + " " + author + " " + pages);
@@ -160,5 +173,14 @@ public class updateUser extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    public void checkButton(View v) {
+        int radioId = radioGroup.getCheckedRadioButtonId();
+
+        radioButton = findViewById(radioId);
+
+//        Toast.makeText(this, "Selected Radio Button: " + radioButton.getText(),
+//                Toast.LENGTH_SHORT).show();
     }
 }
