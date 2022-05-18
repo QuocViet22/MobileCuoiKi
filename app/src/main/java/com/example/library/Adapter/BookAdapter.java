@@ -82,7 +82,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                 } else {
                     List<TbBook> list = new ArrayList<>();
                     for (TbBook tbBook : mListBooksOld) {
-                        if (tbBook.getBook_title().contains(strSearch.toLowerCase())) {
+                        if (tbBook.getBook_title().contains(strSearch)) {
                             list.add(tbBook);
                         }
                     }
